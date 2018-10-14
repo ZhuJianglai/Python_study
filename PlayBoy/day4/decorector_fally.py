@@ -2,7 +2,7 @@
 #!/usr/bin/env python
 # -*-coding:utf-8 -*-
 
-
+## day4 第9课
 user,passwd='alex','abc123'
 # def auth(func):
 #     def wrapper(*args,**kwargs):
