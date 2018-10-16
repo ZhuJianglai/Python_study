@@ -36,7 +36,7 @@ def auth(auth_type):
         return wrapper
     return out_wrapper
 
-#测试pull
+#测试pull   18-10-17
 def index():
     print("welcome to index page")
 
