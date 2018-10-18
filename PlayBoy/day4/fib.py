@@ -13,5 +13,3 @@ def fib(max):
 
 
 fib(10)
-
-1
