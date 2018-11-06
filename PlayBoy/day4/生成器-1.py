@@ -18,8 +18,8 @@ def producer(name):
     c2.__next__()
     print("我要开始做包子拉")
     for i in range(10):
-        time.sleep(1)
-        print("做了一个包子分成了两半")
+        time.sleep(3)
+        print("做了一个包子%s分成了两半"%i)
         c.send(i)
         c2.send(i)
 producer("alex")
