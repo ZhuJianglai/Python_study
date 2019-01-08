@@ -33,5 +33,5 @@ re.search("?p<name>[0-9]+","112312fdsfa")
 re.match()
 re.findall()
 re.search()
-re.split()
+re.split()#分割
 re.sub()# 替换
