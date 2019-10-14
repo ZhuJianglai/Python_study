@@ -1,0 +1,39 @@
+面向对象介绍
+
+特性
+class
+object
+
+
+封装
+    基本语法
+        调用函数--》函数执行--》返回结果
+        r1=role.__init__（） return 内存地址
+        role（r1,name,weapon)
+        r1=role(r1,name,weapon)
+        r1.name=name
+        r1.weapon=weapon
+        r1.buy_gun()#role.by_gun(r1)
+
+    属性
+    方法
+    类变量的用途？
+
+    构造函数
+    析构函数
+
+    私有方法，私有属性
+
+    类变量、实例变量
+
+继承
+
+
+多态
+
+
+
+
+
+
+
