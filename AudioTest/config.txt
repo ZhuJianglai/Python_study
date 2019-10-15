@@ -1,0 +1,7 @@
+sudo apt install ffmpeg
+pip install ffplay
+pip install pygame
+pip install ffmpeg
+pip install configparser
+pip install baidu-aip
+pip install psutil #获取计算机进程 import psutil    "someProgram" in (p.name() for p in psutil.process_iter())
