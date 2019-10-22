@@ -28,12 +28,11 @@ def ping(url):
             line = p.stdout.readline()
             line = line.strip()
             sumcount = sumcount+1
-            print(sumcount)
+            # print(sumcount)
             if line:
                 s1 = str(line, encoding='GBK')
                 str1 = re.search(r'\d{1,}ms', s1)
-                print("--------"+str(datetime.now()) + ':' + s1)
-
+                # print("--------"+str(datetime.now()) + ':' + s1)
                 if str1 is not None:
                     if int(str1.group().replace('ms','')) > 100:
                         # print(str1.group())
@@ -44,15 +43,14 @@ def ping(url):
                     inTxt(str(datetime.now()) + ':' + s1)
                     print(str(datetime.now())+':'+s1 )
                     losscount=losscount+1
-            if time.strftime("%H:%M:%S", time.localtime()) == "17:38:00":
-                badcount=(latecount+losscount)
-                badproportion='percent: {:.2%}'.format(badcount/sumcount)
+            if time.strftime("%H:%M:%S", time.localtime()) == time.strftime("%H", time.localtime())+":59:59":
                 lateproportion='percent: {:.2%}'.format(latecount/sumcount)
-                lossproportion='percent: {:.2%}'.format(losscount/sumcount)
-                info="**************数据包总数："+str(sumcount)+",延时大于100ms数量："+str(latecount)+",,超时数量： "+str(losscount)
-                info1="latecount:%s,超时比例：%s"%(str(latecount),str(losscount))
+                losscount1=losscount-1
+                lossproportion='percent: {:.2%}'.format(losscount1/sumcount)
+
+                info = "**************数据包总数：%d;延时大于100ms数量：%d,所占比例：%s;超时数量：%d,超时所占比例：%s******************"%(sumcount,latecount,lateproportion,losscount1,lossproportion)
+                inTxt(info)
                 print(info)
-                print(info1)
                 sumcount = 0
                 latecount = 0
                 losscount = 0
