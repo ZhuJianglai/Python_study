@@ -2,10 +2,9 @@
 # whilr
 
 count = 0
-while True:
-
+while true:
     print("count:",count)
-    count += 1
+    count +=1
 
 
 
