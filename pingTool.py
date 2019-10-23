@@ -9,6 +9,8 @@ import subprocess
 from datetime import datetime
 import re
 import time
+import os
+
 
 
 
@@ -48,7 +50,7 @@ def ping(url):
                 losscount1=losscount-1
                 lossproportion='percent: {:.2%}'.format(losscount1/sumcount)
 
-                info = "**************数据包总数：%d;延时大于100ms数量：%d,所占比例：%s;超时数量：%d,超时所占比例：%s******************"%(sumcount,latecount,lateproportion,losscount1,lossproportion)
+                info = "**************近一小时内数据包总数：%d;延时大于100ms数量：%d,所占比例：%s;超时数量：%d,超时所占比例：%s******************"%(sumcount,latecount,lateproportion,losscount1,lossproportion)
                 inTxt(info)
                 print(info)
                 sumcount = 0
@@ -57,8 +59,8 @@ def ping(url):
 
 
 def inTxt(txt):
-    name = "network"+ str(datetime.now().strftime("%Y%m%d"))+ ".log"
-    with open(name,'a+') as file:
+    name = "nettest"+ str(datetime.now().strftime("%Y%m%d"))+ ".log"
+    with open(os.path.dirname(__file__)+ '\\' +name,'a+') as file:
         file.write(txt+'\n')
     file.close()
 
