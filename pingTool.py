@@ -36,7 +36,7 @@ def ping(url):
                 str1 = re.search(r'\d{1,}ms', s1)
                 # print("--------"+str(datetime.now()) + ':' + s1)
                 if str1 is not None:
-                    if int(str1.group().replace('ms','')) > 100:
+                    if int(str1.group().replace('ms','')) > 10:
                         # print(str1.group())
                         inTxt(str(datetime.now()) + ':' +s1)
                         print(str(datetime.now()) + ':' + s1)
@@ -49,8 +49,8 @@ def ping(url):
                 lateproportion='percent: {:.2%}'.format(latecount/sumcount)
                 losscount1=losscount-1
                 lossproportion='percent: {:.2%}'.format(losscount1/sumcount)
-
-                info = "**************近一小时内数据包总数：%d;延时大于100ms数量：%d,所占比例：%s;超时数量：%d,超时所占比例：%s******************"%(sumcount,latecount,lateproportion,losscount1,lossproportion)
+                hour=time.strftime("H",time.localtime())
+                info = "**************%s:00:00到%s:59:59近一小时内数%s据包总数：%d;延时大于100ms数量：%d,所占比例：%s;超时数量：%d,超时所占比例：%s******************"%(hour,hour,url,sumcount,latecount,lateproportion,losscount1,lossproportion)
                 inTxt(info)
                 print(info)
                 sumcount = 0
@@ -66,4 +66,4 @@ def inTxt(txt):
 
 
 if __name__ == '__main__':
-    ping('ping rubyapi.vanwardsmart.com -t')
+    ping('ping baidu.com -t')

@@ -1,0 +1,4 @@
+1\在终端输入sudo gedit /etc/default/grub 打开配置文件
+2\
+把grub_timeout_style=hidden给删除或者注释掉，把grub_cmdline_linux_default修改为text。
+3\修改完成后我们 sudo update-grub重新更新grub配置。
