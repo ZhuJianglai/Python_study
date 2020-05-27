@@ -13,11 +13,13 @@ def login(request):
     if request.POST:
         username = password = ''
         username=request.POST.get('username')
-        password=request.POST.get('possword')
-        user=auth.authenticate(username=username,password=password)
-        if user is not None and user.is_active:
-            auth.login(request,user)
-            request.session['user']=username
+        password=request.POST.get('password')
+        # user=auth.authenticate(username=username,password=password)
+        # if user is not None and user.is_active :
+        #     auth.login(request,user)
+        #     request.session['user']=username
+        print(username,password)
+        if username==123 and password==123:
             response =HttpResponseRedirect('/home/')
             return response
         else:
@@ -26,3 +28,5 @@ def login(request):
     return render(request,'login.html')
 
 
+def home(request):
+    return render(request,"home.html")
