@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apitest.models import Apitest,Apistep
+from apitest.models import Apitest,Apistep,Apis
 # Register your models here.
 
 #https://docs.djangoproject.com/en/dev/ref/contrib/admin/#working-with-many-to-many-models
@@ -19,6 +19,9 @@ class ApistepAdmin(admin.ModelAdmin):
 class ApitestAdmin(admin.ModelAdmin):
     list_display = ['apitestname','apitestdesc','apitester','apitestresult','create_time','id']
     inlines = [ApistepInline]
+
+
+# class ApisAdmin(admin.TabularInline):
 
 admin.site.register(Apistep)
 admin.site.register(Apitest)
