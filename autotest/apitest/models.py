@@ -29,6 +29,6 @@ class Apistep(models.Model):
     apistatus=models.BooleanField('是否通过')#测试结果
     create_time=models.DateTimeField('创建时间',auto_now=True)#获取当前时间为创建时间
     def __str__(self):
-        return self.name
+        return self.apiname
 
 
