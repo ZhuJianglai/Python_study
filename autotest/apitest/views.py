@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.contrib.auth import authenticate,login
-from apitest.models import Apitest,Apistep
+from apitest.models import Apitest,Apistep,Apis
 
 doc = open("test.log", "a+")
 # Create your views here.
@@ -55,3 +55,11 @@ def apistep_manage(request):
     username=request.session.get('user','')
     apistep_list=Apistep.objects.all()
     return render(request,'apistep_manage.html',{'user':username,'apisteps':apistep_list})
+
+
+#单一接口测试用例
+@login_required
+def apis_manage(request):
+    username=request.session.get('user','')
+    apis_list=Apis.objects.all()
+    return render(request,'apis_manage.html',{'user':username,'apiss':apis_list})
