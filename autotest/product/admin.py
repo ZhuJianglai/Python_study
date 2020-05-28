@@ -5,4 +5,5 @@ from product.models import Product
 class ProdauctAdmin(admin.ModelAdmin):
     list_display = ['productname','productdesc','producter','create_time','id']
 
+
 admin.site.register(Product)  #把产品模块注册到Django admin中并显示
