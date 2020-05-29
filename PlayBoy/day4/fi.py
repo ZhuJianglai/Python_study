@@ -34,7 +34,7 @@ class CrackSlider():
         target_img = Image.open(BytesIO(requests.get(target_link).content))
         template_img = Image.open(BytesIO(requests.get(template_link).content))
         target_img.save('target.jpg')
-        template_img.save('template.png')
+        template_img.save('templates.png')
         size_orign = target.size
         local_img = Image.open('target.jpg')
         size_loc = local_img.size
@@ -94,7 +94,7 @@ class CrackSlider():
     def crack_slider(self,browser):
         #self.open()
         target = 'target.jpg'
-        template = 'template.png'
+        template = 'templates.png'
         self.get_pic()
         distance = self.match(target, template)
         zoo = 1.36 #缩放系数，需要自己调整大小
