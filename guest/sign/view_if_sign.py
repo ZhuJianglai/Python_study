@@ -2,7 +2,7 @@ import time,hashlib
 from django.http import JsonResponse
 from sign.models import Event, Guest
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
-
+doc = open("test.log", "a+")
 
 #开发带有数字签名的接口
 def user_sign(request):

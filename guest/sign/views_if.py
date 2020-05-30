@@ -4,7 +4,7 @@ import time
 from django.http import JsonResponse
 from sign.models import Event, Guest
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
-
+doc = open("test.log", "a+")
 
 # 添加发布会接口
 def add_event(request):
@@ -39,6 +39,8 @@ def add_event(request):
 def get_event_list(request):
     eid = request.GET.get('eid', '')  # 发布会id
     name = request.GET.get('name', '')  # 发布会名称
+    print(type(eid),file=doc)
+    print('eid:' + eid + ',name:' + name, file=doc)
     if eid == '' and name == '':
         return JsonResponse( {'status': 10021, 'message': 'parameter error'} )
 
@@ -46,6 +48,7 @@ def get_event_list(request):
         event = {}
         try:
             result = Event.objects.get( id=eid )
+            print(str(eid) + str(result),file=doc)
         except ObjectDoesNotExist:
             return JsonResponse( {'status': 10022, 'message': 'query result is empty'} )
         else:
