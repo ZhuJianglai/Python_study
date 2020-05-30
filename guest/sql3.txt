@@ -1,0 +1,28 @@
+django-admin
+python manage.py createsuper
+��������admin   !QAZ2wsx
+��ͨsql	sql123
+
+mysql 3307
+����root !QAZ2wsx   
+sql sql123
+          
+
+
+python manage.py runserver 127.0.0.1:8001  ����
+python manage.py migrate  ��session��������Ǩ��
+
+python web�������MTV
+
+settings.py  ������Ϣ
+views.py ��ʾ����
+urls.��ҳ·����Ϣ
+
+
+
+Test_api
+�˺�Zn mm��qazwsx123
+
+
+
+
