@@ -34,13 +34,19 @@
             <tr>
 
                 <td>{{appcasestep.Appcase.Product.productname}}</td>
-                <td>case{{appcasestep.Appcase.id}}:</td>
-                <td>{{appcasestep.appcasename}}</td>
-                <td>{{appcasestep.apptestresult}}</td>
-                <td>{{appcasestep.apptester}}</td>
-                <td>{{appcasestep.create_time}}</td>
-                <td><a href="#">{{appcasestep.appteststep}}</a></td>
-                <td>{{appcasestep.appteststep}}</td>
+                <td>case{{appcasestep.Appcase.id}}:{{appcase.appcasename}}</td>
+                <td>{{appcasestep.appcasestep}}:{{appcasestep.apptestobjname}}</td>
+                <td>{{appcasestep.appfindmethod}}</td>
+                <td>{{appcasestep.appevelement}}</td>
+                <td>{{appcasestep.appoptmethod}}</td>
+                <td>{{appcasestep.apptestdata}}</td>
+                <td>{{appcasestep.appassertdata}}</td>
+                <td>{% if appcasestep.apptestresult == 1 %}
+                <a style="color:green">{{ appcasestep.apptestresult }}</a>
+                {% else %}
+                <a style="color:red" >{{ appcasestep.apptestresult }}</a>
+
+                 <td>{{appcasestep.create_time}}</td>
                 {% endfor %}
             </tr>
             </tbody>
