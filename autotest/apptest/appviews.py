@@ -6,13 +6,13 @@ from django.shortcuts import render
 
 
 # Create your views here.
-
 # app用例管理
 @login_required
 def appcase_manage(request):
     appcase_list=Appcase.objects.all()
     username=request.session.get('user','')
-    return render(request,'appcase_manage.html',{'user':username,'appcses':appcase_list})
+    print(username)
+    return render(request,'appcase_manage.html',{'user':username,'appcases':appcase_list})
 
 
 # APP用例测试步骤
