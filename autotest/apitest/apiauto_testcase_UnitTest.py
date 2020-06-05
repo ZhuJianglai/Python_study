@@ -7,8 +7,17 @@ import json
 from idlelib.rpc import response_queue
 from time import sleep
 
+import HTMLTestRunner
+import unittest
+
+
+
 
 HOSTNAME='127.0.0.1'
+
+
+
+
 
 def readSQLcase():
     sql='SELECT id,apiname,apiurl,apimethod,apiparamvalue,apiresult,apistatus FROM apitest_apistep WHERE apitest_apistep.Apitest_id =3'
