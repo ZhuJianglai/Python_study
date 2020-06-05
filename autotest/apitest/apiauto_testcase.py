@@ -8,7 +8,7 @@ from idlelib.rpc import response_queue
 from time import sleep
 
 
-HOST='127.0.0.1'
+HOSTNAME='127.0.0.1'
 
 def readSQLcase():
     sql='SELECT id,apiname,apiurl,apimethod,apiparamvalue,apiresult,apistatus FROM apitest_apistep WHERE apitest_apistep.Apitest_id =3'
@@ -95,11 +95,49 @@ def interfaceTest(case_list):
                     preOrderSN(results)
                 except:
                     print('ok')
-            if method.upper()='PATCH':
+            if method.upper()=='PATCH':
                 headers ={'Authorization':'CredentialId'+id,'Content-type':'appliacation/json'}
+                data=None
+                results=requests.patch(new_url+'?'+urlParam(param),date,headers=headers).text
+                responses.append(results)
+                res=readRes(results,res_check)
+                if 'pass'==res:
+                    writeResult(case_id,'pass')
+                    res_flags.append('pass')
+                else:
+                    res_flags.append('fail')
+                    writeResult(case_id,'fail')
+                    writeBug(case_id,interface_name,new_url,results,res_check)
 
-
-
+                try:
+                    preOrderSN(results)
+                except:
+                    print('ok')
+            if method.upper=='POSt':
+                headers ={'Authorization':'CredentialId'+id,'Content-type':'appliacation/json'}
+                if "=" in urlParam(param):
+                    date=None
+                    results=requests.patch(new_url+'?'+urlParam(param),date,headers=headers).text
+                    print('response is post'+results.encode('utf-8'))
+                    responses.append(results)
+                    res=readRes(results,'')
+                else:
+                    print(str(case_id)+'request is'+new_url.encode('utf-8')+'body is'+urlParam(param).encode('utf-8'))
+                    results=requests.post(new_url,date=urlParam(param).encode('utf-8'),headers=headers).text
+                    print('response is post'+results.encode('utf-8'))
+                    responses.append(results)
+                    res=readRes(results,res_check)
+                    if 'pass'==res:
+                        writeResult(case_id,'1')
+                        res_flags.append('pass')
+                    else:
+                        res_flags.append('fail')
+                        writeResult(case_id,'0')
+                        writeBug(case_id,interface_name,new_url,results,res_check)
+                    try:
+                        TaskId(results)
+                    except:
+                        print('ok1')
 
 
 
