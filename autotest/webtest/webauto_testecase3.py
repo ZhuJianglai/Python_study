@@ -29,4 +29,45 @@ class Search(unittest.TestCase):
 
     def test_readSQLcase1(self):
         sql='SELECT id,Webfindmethod,Webevelement,weboptmethod,webtestdata,webassertdata,webtestresult FROM webtest_webcasestep where webtest_webcase.Webcase_id=1 ORDER BY id ASC'
-        coo=
+        coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host=fconfig.getConfig('database','host'),charset='utf8')
+        cursor=coo.cursor()
+        aa=cursor.execute(sql)
+        info=cursor.fetchmany(aa)
+        for ii in info:
+            case_list=[]
+            case_list.append(ii)
+            webtestcase(case_list,self)
+            coo.commit()
+            cursor.close()
+            coo.close()
+
+
+    def tearDown(self):
+        self.driver.quit()
+
+
+
+    def webtestcase(case_list,self):
+        for case in case_list:
+            try:
+                case_id=case[0]
+                findmethod=case[1]
+                evelement=case[2]
+                optmethod=case[3]
+                testdata=case[4]
+            except Exception as e:
+                return '测试用例格式 不正确%s'%e
+            print(case)
+            time.sleep(5)
+            if optmethod=='sendkeys' and findmethod=='find_element_by_id':
+                self.driver.find_element_by_id(evelement).send_keys(testdata)
+            elif optmethod=='click' and findmethod=='find_element_by_name':
+                print(evelement)
+                self.driver.find_element_by_name(evelement).click()
+            elif optmethod=='click' and findmethod=='find_element_by_id':
+                print(evelement)
+                self.driver.find_element_by_id(evelement).click()
+
+
+if
+
