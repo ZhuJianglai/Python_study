@@ -9,15 +9,15 @@
 import json
 import re
 import pandas as pd
-a=list()
-title = [U'brand', U'category', U'deviceId', U'model', U'Suc',u'series',U'statusInfo',U'用水累加量',U'用气累加量',U'零冷水模式',U'零冷水预约状态模式',U'滤芯设置状态']  # 表格title
+
+title = [U'brand', U'category', U'deviceId', U'model', u'series',U'statusInfo',U'用水累加量',U'用气累加量',U'零冷水模式',U'零冷水预约状态模式',U'滤芯设置状态']  # 表格title
 def readjson():
     with open('data_20200609_012444.txt', 'r',encoding='UTF-8') as f1:
         # list1=f1.readlines()[1]
         # list1=json.loads(list1)
         # print(type(list1))
         # print(list1['brand'])
-        temp_list=[]
+
         for line in f1.readlines():
             line1=json.loads(line)
 
@@ -26,12 +26,11 @@ def readjson():
                 # print(type(line1['statusInfo']))
                 # statusInfo='{"'+line1['statusInfo'].replace('\n','","').replace(':','":"')+'}'
                 brand = line1['brand']
-                temp_list[1] = line1['category']
-                temp_list[2] = line1['deviceId']
-                temp_list[3] = line1['model']
-                temp_list[4] = line1['Suc']
-                temp_list[5] = line1['series']
-                temp_list[6] = line1['statusInfo']
+                category = line1['category']
+                deviceId = line1['deviceId']
+                model = line1['model']
+                series = line1['series']
+                statusInfo = line1['statusInfo']
                 str1=''
                 for i in range(len(line1['statusInfo'].split('\n'))):
 
@@ -50,14 +49,14 @@ def readjson():
                 # print(json_list)
                 new_line=json.loads(json_list)
                 # print(new_line['系统模式'])
-                temp_list[7] = line1['用水累加量']
-                temp_list[8] = line1['用水累加量']
-                temp_list[9] = line1['零冷水模式']
-                temp_list[10] = line1['零冷水预约状态模式']
-                temp_list[11] = line1['滤芯设置状态']
-        a.append(temp_list)
+                ys = new_line['用水累加量']
+                yq = new_line['用气累加量']
+                llsms = new_line['零冷水模式']
+                llsyyztms = new_line['零冷水预约状态模式']
+                lxsz = new_line['滤芯设置状态']
+        temp_list = [brand,category,deviceId,model,series,statusInfo,ys,yq,llsms,llsyyztms,lxsz]
                 # print(statusInfo, file=open('test1', 'a+', encoding='UTF-8'))
-    test = pd.DataFrame(columns=title, data=a)
+    test = pd.DataFrame(columns=title, data=temp_list)
     # test.to_csv('e:/testcsv.csv', encoding='gbk')
     test.to_csv(test+'.csv', encoding='gbk')
 
