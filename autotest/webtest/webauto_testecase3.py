@@ -23,7 +23,7 @@ HOST='127.0.0.1'
 class Search(unittest.TestCase):
     """搜索：自动化平台测试开发，软件自动化测试开发"""
     def setUp(self):
-        self.driver=webdriver.Firefox()
+        self.driver=webdriver.Chrome()
         self.driver.get('http://www.baidu.com')
         time.sleep(1)
 
@@ -37,9 +37,9 @@ class Search(unittest.TestCase):
             case_list=[]
             case_list.append(ii)
             webtestcase(case_list,self)
-            coo.commit()
-            cursor.close()
-            coo.close()
+        coo.commit()
+        cursor.close()
+        coo.close()
 
 
     def tearDown(self):
@@ -47,27 +47,39 @@ class Search(unittest.TestCase):
 
 
 
-    def webtestcase(case_list,self):
-        for case in case_list:
-            try:
-                case_id=case[0]
-                findmethod=case[1]
-                evelement=case[2]
-                optmethod=case[3]
-                testdata=case[4]
-            except Exception as e:
-                return '测试用例格式 不正确%s'%e
-            print(case)
-            time.sleep(5)
-            if optmethod=='sendkeys' and findmethod=='find_element_by_id':
-                self.driver.find_element_by_id(evelement).send_keys(testdata)
-            elif optmethod=='click' and findmethod=='find_element_by_name':
-                print(evelement)
-                self.driver.find_element_by_name(evelement).click()
-            elif optmethod=='click' and findmethod=='find_element_by_id':
-                print(evelement)
-                self.driver.find_element_by_id(evelement).click()
+def webtestcase(case_list,self):
+    for case in case_list:
+        try:
+            case_id=case[0]
+            findmethod=case[1]
+            evelement=case[2]
+            optmethod=case[3]
+            testdata=case[4]
+        except Exception as e:
+            return '测试用例格式 不正确%s'%e
+        print(case)
+        time.sleep(5)
+        if optmethod=='sendkeys' and findmethod=='find_element_by_id':
+            self.driver.find_element_by_id(evelement).send_keys(testdata)
+        elif optmethod=='click' and findmethod=='find_element_by_name':
+            print(evelement)
+            self.driver.find_element_by_name(evelement).click()
+        elif optmethod=='click' and findmethod=='find_element_by_id':
+            print(evelement)
+            self.driver.find_element_by_id(evelement).click()
 
 
-if
+if __name__ =='__main__':
+    time.sleep(1)
+    nowww=time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
+    testunit=unittest.TestSuite()
+    testunit.addTest(Search("test_readSQLcase1"))
+    testunit.addTest(Search("test_readSQLcase2"))
+
+    filename="webtest_report.html"  #有点不明白
+    fp=open(filename,'wb')
+    runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title='web自动化测试报告',description=U'搜索测试用例')
+    runner.run(testunit)
+    print('Done')
+    time.sleep(1)
 
