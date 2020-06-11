@@ -9,6 +9,7 @@
 import json
 import re
 import pandas as pd
+import datetime
 
 title = [U'brand', U'category', U'deviceId', U'model', u'series',U'statusInfo',U'用水累加量',U'用气累加量',U'零冷水模式',U'零冷水预约状态模式',U'滤芯设置状态']  # 表格title
 def readjson():
@@ -70,4 +71,6 @@ def readjson():
 
 
 if __name__=='__main__':
+    print('starttime:'+str(datetime.now()))
     readjson()
+    print('donetime:'+str(datetime.now()))
