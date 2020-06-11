@@ -26,16 +26,13 @@ def getGasHeaterUsedTime():
             timeFrameIndex=temp_date[i]['timeFrameIndex']
 
             print(addDate,timeFrameIndex)
-        # print(temp_date[0]['timeFrameIndex'],)
+
 
     except json.decoder.JSONDecodeError as e:
         print(e.msg)
 
 
-# def api_get_txt():
-#     r = requests.get('https://rubyapi.vanward.com/MP_verify_t7OSpGluh7lBo6AB.txt')
-#     print(r.content)
-#     print(r.status_code)
+
 
 if __name__ == '__main__':
     getGasHeaterUsedTime()
