@@ -10,9 +10,9 @@ import os
 import time
 import unittest
 import pymysql
-import fconfig
+# import fconfig
 from selenium import webdriver
-import HTMLTestRunner
+from autotest import HTMLTestRunner
 
 PATH=lambda p:os.path.abspath(
     os.path.join(os.path.dirname(__file__),p)
@@ -28,8 +28,8 @@ class Search(unittest.TestCase):
         time.sleep(1)
 
     def test_readSQLcase1(self):
-        sql='SELECT id,Webfindmethod,Webevelement,weboptmethod,webtestdata,webassertdata,webtestresult FROM webtest_webcasestep where webtest_webcase.Webcase_id=1 ORDER BY id ASC'
-        coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host=fconfig.getConfig('database','host'),charset='utf8')
+        sql='cd ..'
+        coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host=HOST,charset='utf8')
         cursor=coo.cursor()
         aa=cursor.execute(sql)
         info=cursor.fetchmany(aa)
