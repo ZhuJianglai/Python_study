@@ -19,6 +19,16 @@
         </ul>
     </div>
 </nav>
+<!--20200615添加搜索功能-->
+<div class="page-header" style="padding-top:70px;">
+    <form class="navbar-form" method="get" action="/setsearch/">
+        {% csrf_token %}
+        <input type="search" name="setname" placeholder="名称" required>
+        <button type="submit">搜索</button>
+    </form>
+</div>
+
+
 
 <!--列表-->
 <div class="row" style="padding-top:70px;">

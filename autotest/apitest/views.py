@@ -87,3 +87,13 @@ def test_report(request):
 
 def left(request):
     return render(request,"left.html")
+
+
+
+#搜索功能
+@login_required
+def apisearch(request):
+    username=request.session.get('user','')
+    search_apitestname=request.GET.get("apitestname",'')
+    apitest_list=Apitest.objects.filter(apitestname__icontains=search_apitestname)
+    return render(request,'apitest_manage.html',{"user":username,"apitests":apitest_list})
