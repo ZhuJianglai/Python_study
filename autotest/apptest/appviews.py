@@ -21,3 +21,20 @@ def appcasestep_manage(request):
     username =request.session.get('user','')
     appcasestep_list=Appcasestep.objects.all()
     return render(request,'appcasestep_manage.html',{'user':username,'appcasestep':appcasestep_list})
+
+
+@login_required
+def appsearch(request):
+    username=request.session.get('user','')
+    search_appcasename=request.GET.get("appcasename",'')
+    appcase_list=Appcase.objects.filter(appcasename__icontains=search_appcasename)
+    return render(request,'appcase_manage.html',{'user':username,"bugs":appcase_list})
+
+
+
+@login_required
+def appstepsearch(request):
+    username=request.session.get('user','')
+    search_appcasestepname=request.GET.get("appcasestepname",'')
+    appcasestep_list=Appcase.objects.filter(appcasestepname__icontains=search_appcasestepname)
+    return render(request,'appcase_manage.html',{'user':username,"bugs":appcasestep_list})

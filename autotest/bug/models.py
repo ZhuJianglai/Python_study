@@ -19,4 +19,4 @@ class Bug(models.Model):
 
 
     def __str__(self):
-        return self.bugname,self.bugdetail,self.bugstatus,self.buglevel,self.bugcreater,self.bugassign
+        return self.bugname
