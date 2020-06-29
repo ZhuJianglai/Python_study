@@ -21,12 +21,19 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </ul>
         <ul class="nav justify-content-end">
-            <li class="nav-link"><a style="color:white" href="#" >{{user}}</a> </li>
-            <li class="nav-link"><a style="color:white" href="/logout">退出</a></li>
+            <li><a style="color:white" href="#" >{{user}}</a> </li>&nbsp;&nbsp;&nbsp;&nbsp;
+            <li><a style="color:white" href="/logout">退出</a></li>
         </ul>
     </div>
 </nav>
-
+<!--搜索栏-->
+<div class="page-header" style="padding-top:70px;">
+    <form class="navbar-form" method="get" action="/websearch/">
+        {% csrf_token %}
+        <input type="search" name="webcasename" placeholder="web名称" required>
+        <button type="submit">搜素</button>
+    </form>
+</div>
 <!--列表-->
 <div class="row" style="padding-top:70px;">
     <div class="col-md-11">

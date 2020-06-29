@@ -14,11 +14,11 @@ class Webcase(models.Model):
         return self.webcasename
 
 class Webcasestep(models.Model):
-    Webcase=models.ForeignKey(Webcase,on_delete=models.CASCADE,null=True)
-    Webteststep=models.CharField('测试步骤',max_length=200)
-    Webtestobjname=models.CharField('测试对象名称描述',max_length=200)
-    Webfindmethod=models.CharField('定位方式',max_length=200)
-    Webevelement=models.CharField('控件元素',max_length=800)
+    webcase=models.ForeignKey(Webcase,on_delete=models.CASCADE,null=True)
+    webteststep=models.CharField('测试步骤',max_length=200)
+    webtestobjname=models.CharField('测试对象名称描述',max_length=200)
+    webfindmethod=models.CharField('定位方式',max_length=200)
+    webevelement=models.CharField('控件元素',max_length=800)
     weboptmethod=models.CharField('操作方式',max_length=200)
     webtestdata=models.CharField('测试数据',max_length=200,null=True)
     webassertdata=models.CharField('验证数据',max_length=200)
@@ -27,6 +27,8 @@ class Webcasestep(models.Model):
     class Meta:
         verbose_name='web测试用例详细'
         verbose_name_plural='web测试用例详细'
+
+
     def __str__(self):
         return self.webteststep
 
