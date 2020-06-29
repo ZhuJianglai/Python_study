@@ -84,5 +84,21 @@
         </table>
     </div>
 </div>
+
+<!--翻页功能-->
+<div style="container">
+    <ul class="pageination" id="pager">
+        {# 上一页连接开始 #}
+        {% if apitests.has_previous %}
+        {# 如果显示上一页，则显示上一页的链接#}
+        <li class="previous">
+            <a herf="/apitest_manage/?page={{ apitests.previous_page_namber }}">上一页</a>
+        </li>
+        {# 上一页标签 #}
+        {% else %}
+
+    </ul>
+</div>
+
 </body>
 </html>
