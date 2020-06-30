@@ -5,6 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.contrib.auth import authenticate,login
 from apitest.models import Apitest,Apistep,Apis
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+
+
+
+
 
 doc = open("test.log", "a+")
 # Create your views here.
@@ -48,6 +53,17 @@ def apitest_manage(request):
 
     apitest_list =Apitest.objects.all()  #读取所有流程接口数据
     username=request.session.get('user','') #读取浏览器登录session
+    # 20200630添加翻页功能
+    paginator=Paginator(apitest_list,8) #生成paginator对象，设置每页显示8条记录
+    page=request.GET.get('page',1)#获取当前页码数，默认为第一页
+    currentPage=int(page)
+    try:
+        apitest_list=paginator.page(page)#获取当前页码数的记录
+    except PageNotAnInteger:
+        apitest_list=paginator.page(1)#如果输入的页码不是整数，则显示第一页内容
+    except EmptyPage:
+        apitest_list=paginator.page(paginator.num_pages)#如果输入的页数不在系统中，则显示最后一页
+
     return render(request,'apitest_manage.html',{"user":username,"apitests":apitest_list})#定义流程接口数据的变量并返回到前端
 
 #接口步骤管理
@@ -105,3 +121,5 @@ def apissearch(request):
     search_apiname=request.GET.get('apiname','')
     apis_list=Apis.objects.filter(apisname__icontains=search_apiname)
     return render(request,'apis_manage.html',{"user":username,'apiss':apis_list})
+
+
