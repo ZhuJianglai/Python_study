@@ -71,6 +71,15 @@ def apitest_manage(request):
 def apistep_manage(request):
     username=request.session.get('user','')
     apistep_list=Apistep.objects.all()
+    paginator=Paginator(apistep_list,8)
+    page=request.GET.get('page',1)
+    currentPage=int(page)
+    try:
+        apistep_list=paginator.page(page)
+    except PageNotAnInteger:
+        apistep_list=paginator.page(1)
+    except EmptyPage:
+        apistep_list=paginator.page(paginator.num_pages)
     return render(request,'apistep_manage.html',{'user':username,'apisteps':apistep_list})
 
 
@@ -79,6 +88,15 @@ def apistep_manage(request):
 def apis_manage(request):
     username=request.session.get('user','')
     apis_list=Apis.objects.all()
+    paginator=Paginator(apis_list,8)
+    page=request.GET.get('page',1)
+    currentPage=int(page)
+    try:
+        apis_list=paginator.page(page)
+    except PageNotAnInteger:
+        apis_list=paginator.page(1)
+    except EmptyPage:
+        apis_list=paginator.page(paginator.num_pages)
     return render(request,'apis_manage.html',{'user':username,'apiss':apis_list})
 
 
@@ -123,3 +141,9 @@ def apissearch(request):
     return render(request,'apis_manage.html',{"user":username,'apiss':apis_list})
 
 
+@login_required
+def apistepsearch(request):
+    username=request.session.get('user','')
+    search_apistepname=request.GET.get('apistepname','')
+    apistep_list=Apis.objects.filter(apistepname__icontains=search_apistepname)
+    return render(request,'apistep_manage.html',{"user":username,'apiss':apistep_list})
