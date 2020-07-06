@@ -11,6 +11,7 @@ from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 def webcase_manage(request):
     webcase_list=Webcase.objects.all()
     username=request.session.get('user','')
+    webcase_count=Webcase.objects.all().count()
     paginator=Paginator(webcase_list,8)
     page=request.GET.get('page',1)
     crrentPage=int(page)
@@ -21,7 +22,7 @@ def webcase_manage(request):
     except EmptyPage:
         webcase_list=paginator.page(paginator.num_pages)
     print(username)
-    return render(request,'webcase_manage.html',{'user':username,'webcases':webcase_list})
+    return render(request,'webcase_manage.html',{'user':username,'webcases':webcase_list,'webcasecount':webcase_count})
 
 
 # web用例测试步骤
@@ -30,6 +31,7 @@ def webcasestep_manage(request):
     username =request.session.get('user','')
     print(username)
     webcasestep_list=Webcasestep.objects.all()
+    webcasestep_count=Webcasestep.objects.all().count()
     paginator=Paginator(webcasestep_list,8)
     page=request.GET.get('page',1)
     crrentPage=int(page)
@@ -39,7 +41,7 @@ def webcasestep_manage(request):
         webcasestep_list=paginator.page(1)
     except EmptyPage:
         webcasestep_list=paginator.page(paginator.num_pages)
-    return render(request,'webcasestep_manage.html',{'user':username,'webcasesteps':webcasestep_list})
+    return render(request,'webcasestep_manage.html',{'user':username,'webcasesteps':webcasestep_list,'webcasestepcount':webcasestep_count})
 
 # web搜索功能
 @login_required

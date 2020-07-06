@@ -7,6 +7,7 @@ from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 def bug_manage(request):
     username =request.session.get('user','')
     bug_list=Bug.objects.all()
+    bug_count=Bug.objects.all().count()
     paginator=Paginator(bug_list,8)
     page=request.GET.get('page',1)
     crrentPage=int(page)
@@ -16,7 +17,7 @@ def bug_manage(request):
         bug_list=paginator.page(1)
     except EmptyPage:
         bug_list=paginator.page(paginator.num_pages)
-    return render(request,'bug_manage.html',{'user':username,'bugs':bug_list})
+    return render(request,'bug_manage.html',{'user':username,'bugs':bug_list,"bugcount":bug_count})
 
 
 

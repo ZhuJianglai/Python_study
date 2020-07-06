@@ -87,6 +87,12 @@
 
 <!--翻页功能-->
 <span style="position:absolute;right:100px;bottom:30px;">
+<!--    统计功能-->
+    <div style="position:absolute;right:100px;width:800px;">
+        <tr><th>共</th>&nbsp;<td>{{ apitestcount }}</td>&nbsp;<th>条记录</th></tr>  {# 前段读取定义的变量 #}
+    </div>
+
+
     <div class="container">
         <ul class="pagination" id="page">
         {# 上一页连接开始 #}

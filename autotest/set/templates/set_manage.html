@@ -53,6 +53,11 @@
 </div>
 <!--翻页功能-->
 <span style="position:absolute;right:100px;bottom:30px;">
+
+    <div style="position:absolute;right:100px;width:100px">
+        <tr><th>共</th><td>{{setcount}}</td><th>条记录</th></tr>
+    </div>
+
     <div class="container">
         <ul class="pagination" id="pager">
             {% if sets.has_previous %}

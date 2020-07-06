@@ -9,6 +9,7 @@ def product_manage(request):
     doc = open("test.log", "a+")
     username=request.session.get('user','')
     product_list=Product.objects.all()
+    product_count=Product.objects.all().count()
     pageinator=Paginator(product_list,8)#生产paginator对象，设置每页8条数据
     page=request.GET.get('page',1)#获取当前的页码，默认为第一页
     currentPage=int(page)

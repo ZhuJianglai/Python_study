@@ -12,6 +12,7 @@ from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 def set_manage(request):
     username=request.session.get('user','')
     set_list=Set.objects.all()
+    set_count=Set.objects.all().count()
     paginator=Paginator(set_list,8)
     page=request.GET.get('page',1)
     currentPage=int(page)
@@ -22,7 +23,7 @@ def set_manage(request):
     except EmptyPage:
         set_list=paginator.page(paginator.num_pages)
 
-    return render(request,'set_manage.html',{'user':username,'sets':set_list})
+    return render(request,'set_manage.html',{'user':username,'sets':set_list,'setcount':set_count})
 
 
 def set_user(request):

@@ -52,6 +52,7 @@ def logout(request):
 def apitest_manage(request):
 
     apitest_list =Apitest.objects.all()  #读取所有流程接口数据
+    apitest_count=Apitest.objects.all().count() #统计数量
     username=request.session.get('user','') #读取浏览器登录session
     # 20200630添加翻页功能
     paginator=Paginator(apitest_list,8) #生成paginator对象，设置每页显示8条记录
@@ -64,13 +65,14 @@ def apitest_manage(request):
     except EmptyPage:
         apitest_list=paginator.page(paginator.num_pages)#如果输入的页数不在系统中，则显示最后一页
 
-    return render(request,'apitest_manage.html',{"user":username,"apitests":apitest_list})#定义流程接口数据的变量并返回到前端
+    return render(request,'apitest_manage.html',{"user":username,"apitests":apitest_list,"apitestcount":apitest_count})#定义流程接口数据的变量并返回到前端
 
 #接口步骤管理
 @login_required
 def apistep_manage(request):
     username=request.session.get('user','')
     apistep_list=Apistep.objects.all()
+    apistep_count=Apistep.objects.all().count()
     paginator=Paginator(apistep_list,8)
     page=request.GET.get('page',1)
     currentPage=int(page)
@@ -80,7 +82,7 @@ def apistep_manage(request):
         apistep_list=paginator.page(1)
     except EmptyPage:
         apistep_list=paginator.page(paginator.num_pages)
-    return render(request,'apistep_manage.html',{'user':username,'apisteps':apistep_list})
+    return render(request,'apistep_manage.html',{'user':username,'apisteps':apistep_list,"apistepcount":apistep_count})
 
 
 #单一接口测试用例
@@ -88,6 +90,7 @@ def apistep_manage(request):
 def apis_manage(request):
     username=request.session.get('user','')
     apis_list=Apis.objects.all()
+    apis_count = Apis.objects.all().count()
     paginator=Paginator(apis_list,8)
     page=request.GET.get('page',1)
     currentPage=int(page)
@@ -97,7 +100,7 @@ def apis_manage(request):
         apis_list=paginator.page(1)
     except EmptyPage:
         apis_list=paginator.page(paginator.num_pages)
-    return render(request,'apis_manage.html',{'user':username,'apiss':apis_list})
+    return render(request,'apis_manage.html',{'user':username,'apiss':apis_list,"apiscount":apis_count})
 
 
 #测试报告
