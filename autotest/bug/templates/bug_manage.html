@@ -55,5 +55,29 @@
         </table>
     </div>
 </div>
+<span style="position:absolute;right:100px;bottom:30px;">
+    <div class="container">
+        <ul class="pagination" id="page">
+            {% if bugs.has_previous %}
+                <li class="previous"><a href="/bug_manage/?page={{bugs.previous_page_number}}">上一页</a> </li>
+            {% else %}
+                <li class="previous disable"><a href="#">上一页</a> </li>
+            {% endif %}
+            {% for num in bugs.paginator.page_range %}
+                {% if num == currentPage %}
+                    <li class="item active"><a href="/bug_manage/?page={{num}}">{{ num }}</a> </li>
+                {% else %}
+                    <li class="item"><a href="/bug_manage/?page={{num}}">{{ num }}</a> </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if bugs.has_next %}
+                <li class="next"><a href="/bug_manage/?page={{ bugs.next_page_number }}">下一页</a> </li>
+                {% else %}
+                <li class="next disable"><a href="#">下一页</a> </li>
+            {% endif %}
+        </ul>
+    </div>
+</span>
 </body>
 </html>

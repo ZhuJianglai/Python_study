@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from webtest.models import Webcase,Webcasestep
 
 from django.shortcuts import render
-
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 
 # Create your views here.
@@ -11,6 +11,15 @@ from django.shortcuts import render
 def webcase_manage(request):
     webcase_list=Webcase.objects.all()
     username=request.session.get('user','')
+    paginator=Paginator(webcase_list,8)
+    page=request.GET.get('page',1)
+    crrentPage=int(page)
+    try:
+        webcase_list=paginator.page(page)
+    except PageNotAnInteger:
+        webcase_list=paginator.page(1)
+    except EmptyPage:
+        webcase_list=paginator.page(paginator.num_pages)
     print(username)
     return render(request,'webcase_manage.html',{'user':username,'webcases':webcase_list})
 
@@ -21,6 +30,15 @@ def webcasestep_manage(request):
     username =request.session.get('user','')
     print(username)
     webcasestep_list=Webcasestep.objects.all()
+    paginator=Paginator(webcasestep_list,8)
+    page=request.GET.get('page',1)
+    crrentPage=int(page)
+    try:
+        webcasestep_list=paginator.page(page)
+    except PageNotAnInteger:
+        webcasestep_list=paginator.page(1)
+    except EmptyPage:
+        webcasestep_list=paginator.page(paginator.num_pages)
     return render(request,'webcasestep_manage.html',{'user':username,'webcasesteps':webcasestep_list})
 
 # web搜索功能
