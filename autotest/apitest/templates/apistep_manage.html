@@ -9,7 +9,7 @@
 
     <!--    20200707添加-->
     <link rel="stylesheet" type="text/css" href="/static/admin/css/form.css"/>
-    <script type="text/javascript" src="/damin/jsi18n/"></script>
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
     <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
     <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
     <script type="text/javascript" src="/static/admin/js/core.js"></script>
@@ -109,6 +109,9 @@
                     {% endif %}
                 </td>
                 <td>{{apistep.create_time}}</td>
+                <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Apis" href="../admin/apitest/apis/?{{apis.id}}/change/?_to_field=id&_popup=1">
+                    <img src="/static/admin/img/icon-changelink.svg"/>
+                </a> </td>
             </tr>
             {% endfor %}
             </tbody>
