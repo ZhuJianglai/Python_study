@@ -65,7 +65,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID</th><th>产品</th><th>bug名称</th><th>bug详情</th><th>解决状态</th><th>严重程度</th><th>创建人</th><th>分配给</th><th>创建时间</th>
+                <th>ID</th><th>产品</th><th>bug名称</th><th>bug详情</th><th>解决状态</th><th>严重程度</th><th>创建人</th><th>分配给</th><th>创建时间</th><th>编辑</th>
             </tr>
             </thead>
             <tbody>
@@ -80,6 +80,9 @@
                 <td>{{bug.bugcreater}}</td>
                 <td>{{bug.bugassign}}</td>
                 <td>{{bug.create_time}}</td>
+                <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Bug" href="../admin/bug/bug/?{{bug.id}}/change/?_to_field=id&_popup=1">
+                    <img src="/static/admin/img/icon-changelink.svg"/>
+                </a></td>
                 {% endfor %}
             </tr>
             </tbody>

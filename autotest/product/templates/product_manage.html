@@ -69,7 +69,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-            <th> ID</th><th>产品名称</th><th>产品描述</th><th>产品负责人</th><th>创建时间</th>
+            <th> ID</th><th>产品名称</th><th>产品描述</th><th>产品负责人</th><th>创建时间</th><th>编辑</th>
             </tr>
             </thead>
             <tbody>
@@ -81,6 +81,9 @@
                 <td>{{product.producter}}</td>
                 <td>{{product.create_time}}</td>
             </tr>
+            <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Product" href="../admin/product/product/?{{product.id}}/change/?_to_field=id&_popup=1">
+                    <img src="/static/admin/img/icon-changelink.svg"/>
+                </a></td>
             {% endfor %}
             </tbody>
         </table>
