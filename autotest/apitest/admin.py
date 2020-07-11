@@ -28,3 +28,6 @@ class ApisAdmin(admin.TabularInline):
 admin.site.register(Apistep)
 admin.site.register(Apitest)
 admin.site.register(Apis)
+
+admin.site.site_title='AutotestPlat'
+admin.site.Site_header='AutotestPlat'

@@ -80,13 +80,14 @@
                 <td>{{product.productdesc}}</td>
                 <td>{{product.producter}}</td>
                 <td>{{product.create_time}}</td>
-            </tr>
-            <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Product" href="../admin/product/product/?{{product.id}}/change/?_to_field=id&_popup=1">
+                <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Product" href="../admin/product/product/?{{product.id}}/change/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-changelink.svg"/>
-            </a></td>
-            <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Product" href="../admin/product/product/?{{product.id}}/delete/?_to_field=id&_popup=1">
+                </a></td>
+                <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Product" href="../admin/product/product/?{{product.id}}/delete/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-deletelink.svg"/>
-            </a></td>
+                </a></td>
+            </tr>
+
             {% endfor %}
             </tbody>
         </table>

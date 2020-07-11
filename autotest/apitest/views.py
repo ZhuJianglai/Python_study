@@ -150,3 +150,8 @@ def apistepsearch(request):
     search_apistepname=request.GET.get('apistepname','')
     apistep_list=Apis.objects.filter(apistepname__icontains=search_apistepname)
     return render(request,'apistep_manage.html',{"user":username,'apiss':apistep_list})
+
+
+
+def welcome(request):
+    return  render(request,"welcome.html")

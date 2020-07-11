@@ -51,4 +51,5 @@ urlpatterns = [
     path('appstepsearch/',appviews.appstepsearch),
     path('websearch/', webviews.websearch),
     path('webstepsearch/',webviews.webstepsearch),
+    path('welcome/',views.welcome),
 ]
