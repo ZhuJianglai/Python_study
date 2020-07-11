@@ -70,7 +70,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID</th><th>所属产品</th><th>所属用例</th><th>步骤</th><th>定位方式</th><th>控件元素</th><th>操作方法</th><th>测试数据</th><th>验证数据</th><th>测试结果</th><th>时间</th><th>编辑</th>
+                <th>ID</th><th>所属产品</th><th>所属用例</th><th>步骤</th><th>定位方式</th><th>控件元素</th><th>操作方法</th><th>测试数据</th><th>验证数据</th><th>测试结果</th><th>时间</th><th>编辑</th><th>删除</th>
             </tr>
             </thead>
             <tbody>
@@ -94,6 +94,9 @@
                  <td>{{appcasestep.create_time}}</td>
                 <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Appcasestep" href="../admin/appcasestep/appcasestep/?{{appcasestep.id}}/change/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-changelink.svg"/>
+                </a></td>
+                <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Appcasestep" href="../admin/appcasestep/appcasestep/?{{appcasestep.id}}/delete/?_to_field=id&_popup=1">
+                    <img src="/static/admin/img/icon-deletelink.svg"/>
                 </a></td>
                 {% endfor %}
             </tr>

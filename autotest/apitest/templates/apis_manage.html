@@ -89,7 +89,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th> ID</th><th>产品</th><th>单一接口测试用例名称</th><th>URL地址</th><th>参数值</th><th>方法</th><th>预期结果</th><th>测试结果</th><th>执行时间</th><th>编辑 </th>
+            <th> ID</th><th>产品</th><th>单一接口测试用例名称</th><th>URL地址</th><th>参数值</th><th>方法</th><th>预期结果</th><th>测试结果</th><th>执行时间</th><th>编辑 </th><th>删除</th>
             </tr>
             </thead>
             <tbody>
@@ -111,6 +111,9 @@
                 <td>{{apistep.create_time}}</td>
                 <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Apis" href="../admin/apitest/apis/?{{apis.id}}/change/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-changelink.svg"/>
+                </a> </td>
+                <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Apis" href="../admin/apitest/apis/?{{apis.id}}/delete/?_to_field=id&_popup=1">
+                    <img src="/static/admin/img/icon-deletelink.svg"/>
                 </a> </td>
             </tr>
             {% endfor %}
