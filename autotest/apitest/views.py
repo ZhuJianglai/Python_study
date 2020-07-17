@@ -67,22 +67,30 @@ def apitest_manage(request):
 
     return render(request,'apitest_manage.html',{"user":username,"apitests":apitest_list,"apitestcount":apitest_count})#定义流程接口数据的变量并返回到前端
 
-#接口步骤管理
+#接口步骤管理（20200717修改）
+# @login_required
+# def apistep_manage(request):
+#     username=request.session.get('user','')
+#     apistep_list=Apistep.objects.all()
+#     apistep_count=Apistep.objects.all().count()
+#     paginator=Paginator(apistep_list,8)
+#     page=request.GET.get('page',1)
+#     currentPage=int(page)
+#     try:
+#         apistep_list=paginator.page(page)
+#     except PageNotAnInteger:
+#         apistep_list=paginator.page(1)
+#     except EmptyPage:
+#         apistep_list=paginator.page(paginator.num_pages)
+#     return render(request,'apistep_manage.html',{'user':username,'apisteps':apistep_list,"apistepcount":apistep_count})
 @login_required
 def apistep_manage(request):
     username=request.session.get('user','')
-    apistep_list=Apistep.objects.all()
-    apistep_count=Apistep.objects.all().count()
-    paginator=Paginator(apistep_list,8)
-    page=request.GET.get('page',1)
-    currentPage=int(page)
-    try:
-        apistep_list=paginator.page(page)
-    except PageNotAnInteger:
-        apistep_list=paginator.page(1)
-    except EmptyPage:
-        apistep_list=paginator.page(paginator.num_pages)
-    return render(request,'apistep_manage.html',{'user':username,'apisteps':apistep_list,"apistepcount":apistep_count})
+    apitestid=request.GET.get('apitest.id',None)
+    apitest=Apitest.objects.get(id=apitestid)
+    apistep_list=Apitest.objects.all()
+    return render(request, 'apistep_manage.html', {'user': username, 'apitest': apitest,'apisteps':apistep_list})
+
 
 
 #单一接口测试用例

@@ -21,7 +21,7 @@ from bug import bugviews
 from set import setviews
 from apptest import appviews
 from webtest import webviews
-
+name='apistep_manage'
 urlpatterns = [
     path('', views.login),
     path('admin/', admin.site.urls),
@@ -31,7 +31,7 @@ urlpatterns = [
     path('logout/',views.logout),
     path('product_manage/',proviews.product_manage),
     path('apitest_manage/',views.apitest_manage),
-    path('apistep_manage/',views.apistep_manage),
+    path('apistep_manage/',views.apistep_manage,name='apistep_manage'),
     path('apis_manage/',views.apis_manage),
     path('bug_manage/',bugviews.bug_manage),
     path('set_manage/',setviews.set_manage),
