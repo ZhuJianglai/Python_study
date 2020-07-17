@@ -66,8 +66,8 @@ def apitest_manage(request):
         apitest_list=paginator.page(paginator.num_pages)#如果输入的页数不在系统中，则显示最后一页
 
     return render(request,'apitest_manage.html',{"user":username,"apitests":apitest_list,"apitestcount":apitest_count})#定义流程接口数据的变量并返回到前端
-
-#接口步骤管理（20200717修改）
+#
+# 接口步骤管理（20200717修改）
 # @login_required
 # def apistep_manage(request):
 #     username=request.session.get('user','')
@@ -88,8 +88,9 @@ def apistep_manage(request):
     username=request.session.get('user','')
     apitestid=request.GET.get('apitest.id',None)
     apitest=Apitest.objects.get(id=apitestid)
+    print('i look')
     apistep_list=Apitest.objects.all()
-    return render(request, 'apistep_manage.html', {'user': username, 'apitest': apitest,'apisteps':apistep_list})
+    return render(request,'apistep_manage.html', {'user': username, 'apitest': apitest,'apisteps':apistep_list})
 
 
 
