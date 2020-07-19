@@ -98,7 +98,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th> ID</th><th>产品名称</th><th>流程接口测试名称</th><th>流程接口描述</th><th>测试负责人</th><th>测试结果</th><th>测试用例步骤</th><th>编辑 </th><th>删除</th>
+            <th> ID</th><th>产品名称</th><th>流程接口测试名称</th><th>流程接口描述</th><th>测试负责人</th><th>测试结果</th><th>测试用例步骤</th><th>查看</th><th>编辑 </th><th>删除</th>
             </tr>
             </thead>
             <tbody>
@@ -116,6 +116,10 @@
                     {% endif %}
                 </td>
                 <td></td>
+                <td>
+                    <a href="{% url "apistep_manage" %}?apitest.id={{ apitest.id }} ">
+                    <img src="/static/admin/img/icon-yes.svg"/></a>
+                </td>
 <!--                <td>{{apitest.apitestresult}}</td>-->
 <!--                <td>{{apitest.Apistep.apiteststep}}</td>-->
                 <td><a style="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Apistest" href="../admin/apitest/apitest/?{{ apistest.id}}/change/?_to_field=id&_popup=1">
@@ -124,6 +128,7 @@
                 <td><a style="color:light blue" class="ralated-widget-wrapper-link add-related" id="add_id_Apistest" href="../admin/apitest/apitest/{{ apitest.id}}/delete/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-deletelink.svg"></a> </td>
             </tr>
+
             {% endfor %}
 
             </tbody>
