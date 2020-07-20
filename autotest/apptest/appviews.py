@@ -30,6 +30,9 @@ def appcase_manage(request):
 def appcasestep_manage(request):
     username =request.session.get('user','')
     appcasestep_list=Appcasestep.objects.all()
+    appcaseid=request.GET.get('appcase.id',None)
+    appcase=Appcase.objects.all(id=appcaseid)
+    appcasestep_list = Appcasestep.objects.all()
     appcasestep_count=Appcasestep.objects.all().count()
     paginator=Paginator(appcasestep_list,8)
     page=request.GET.get('page',1)

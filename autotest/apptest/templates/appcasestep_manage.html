@@ -80,7 +80,7 @@
             <tbody>
             {% for appcasestep in appcasesteps %}
             <tr>
-
+                {% if appcasestep.Appcase.id == appcase.id %}
                 <td>{{appcasestep.Appcase.Product.productname}}</td>
                 <td>case{{appcasestep.Appcase.id}}:{{appcase.appcasename}}</td>
                 <td>{{appcasestep.appcasestep}}:{{appcasestep.apptestobjname}}</td>
@@ -102,12 +102,28 @@
                 <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Appcasestep" href="../admin/appcasestep/appcasestep/?{{appcasestep.id}}/delete/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-deletelink.svg"/>
                 </a></td>
-                {% endfor %}
+                {% else %}
+                {% endif %}
             </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
+
+
+<td>
+    <a style="'color:light blue" href="../appcase_manage/">
+        <img src="/static/admin/img/icon-yes.svg" alt="返回">返回
+    </a>
+</td>
+<td>
+    <a style="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Appcase" href="../admin/apptest/appcase/{{appcasw.id}}/change/?_to_field=id&_popup=1">
+        <img src="/static/admin/img/icon-changelink.svg"/>编辑
+    </a>
+</td>
+
 <span style="position:absolute;right:100px;bottom:30px;">{#把翻页功能固定显示在右下角#}
     <div style="position:absolute;right:100px;width:100px">
         <tr><th>共</th><td>{{appcasestepcount}}</td><th>条记录</th></tr>

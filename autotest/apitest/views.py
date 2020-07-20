@@ -88,8 +88,6 @@ def apistep_manage(request):
     username=request.session.get('user','')
     apitestid=request.GET.get('apitest.id',None)
     apitest=Apitest.objects.get(id=apitestid)
-    print(apitestid)
-    print(apitest)
     apistep_list=Apitest.objects.all()
     return render(request,'apistep_manage.html', {'user': username, 'apitest': apitest,'apisteps':apistep_list})
 

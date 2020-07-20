@@ -10,23 +10,30 @@ from product.models import Product
 #     extra = 1
 
 
-class ApistepInline(admin.TabularInline):
+# class ApistepInline(admin.TabularInline):
+#     model = Apistep
+#     extra = 1
+
+# 20200720修改
+class ApistepAdmin(admin.TabularInline):
+    list_display = ['apiname', 'apiurl', 'apiparamvalue', 'apimethod', 'apiresult', 'apistatus', 'create_time', 'id','apitest']
     model = Apistep
     extra = 1
 
-class ApistepAdmin(admin.ModelAdmin):
-    list_display=['apiname','apiurl','apiparamvalue','apimethod','apiresult','apistatus','create_time','id','apitest']
+# class ApistepAdmin(admin.ModelAdmin):
+#     list_display=['apiname','apiurl','apiparamvalue','apimethod','apiresult','apistatus','create_time','id','apitest']
 
 class ApitestAdmin(admin.ModelAdmin):
     list_display = ['apitestname','apitestdesc','apitester','apitestresult','create_time','id']
-    inlines = [ApistepInline]
+    # inlines = [ApistepInline]
+    inlines = [ApistepAdmin]
 
 
 class ApisAdmin(admin.TabularInline):
     list_disolay=['apiname','apiurl','apiparamvalue','apimethod','apiresult','apistatus','create_time','id','apitest','product']
 
 admin.site.register(Apistep)
-admin.site.register(Apitest)
+admin.site.register(Apitest,ApitestAdmin)
 admin.site.register(Apis)
 
 admin.site.site_title='AutotestPlat'

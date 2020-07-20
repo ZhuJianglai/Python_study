@@ -76,7 +76,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID</th><th>产品</th><th>测试用例名称</th><th>测试结果</th><th>测试负责人</th><th>时间</th><th>测试用例步骤</th><th>编辑</th><th>删除</th>
+                <th>ID</th><th>产品</th><th>测试用例名称</th><th>测试结果</th><th>测试负责人</th><th>时间</th><th>测试用例步骤</th><th>查看</th><th>编辑</th><th>删除</th>
             </tr>
             </thead>
             <tbody>
@@ -90,6 +90,10 @@
                 <td>{{appcase.create_time}}</td>
                 <td><a href="#">{{appcase.appteststep}}</a></td>
 <!--                <td>{{appcase.appteststep}}</td>-->
+                <td>
+                    <a href="{% url "appcasestep_manage" %}?appcase.id={{ appcase.id }} ">
+                    <img src="/static/admin/img/icon-yes.svg"/></a>
+                </td>
                 <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Appcase" href="../admin/appcase/appcase/?{{appcase.id}}/change/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-changelink.svg"/>
                 </a></td>

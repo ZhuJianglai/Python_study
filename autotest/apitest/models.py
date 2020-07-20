@@ -28,6 +28,9 @@ class Apistep(models.Model):
     apiresponse=models.CharField('响应数据',max_length=5000,null=True)
     apistatus=models.BooleanField('是否通过')#测试结果
     create_time=models.DateTimeField('创建时间',auto_now=True)#获取当前时间为创建时间
+    class Meta:
+        verbose_name='流程场景接口测试用例'
+        verbose_name_plural='流程场景接口测试用例'
     def __str__(self):
         return self.apiname
 
