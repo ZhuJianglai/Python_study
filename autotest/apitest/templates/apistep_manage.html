@@ -100,8 +100,6 @@
             {% for apistep in apisteps %}
             <tr>
                 {% if apistep.Apitest.id == apitest.id %}
-                <td>apistep.Apitest.id</td>
-                <td>apitest.id</td>
                 <td>{{apistep.id}}</td>
                 <td>{{apistep.Apitest.Product.productname}}</td>
                 <td>case{{apistep.Apitest.id}}:{{apistep.Apitest.apitestname}}</td>
