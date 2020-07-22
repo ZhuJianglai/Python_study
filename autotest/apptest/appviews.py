@@ -25,25 +25,41 @@ def appcase_manage(request):
     return render(request,'appcase_manage.html',{'user':username,'appcases':appcase_list,"appcasecount":appcase_count})
 
 
+# # APP用例测试步骤
+# @login_required
+# def appcasestep_manage(request):
+#     username =request.session.get('user','')
+#     # appcasestep_list=Appcasestep.objects.all()
+#     appcaseid=request.GET.get('appcase.id',None)
+#     appcase=Appcase.objects.get(id=appcaseid)
+#     print(appcase)
+#     appcasestep_list = Appcasestep.objects.all()
+#     print(appcasestep_list)
+#     appcasestep_count=Appcasestep.objects.all().count()
+#     paginator=Paginator(appcasestep_list,8)
+#     page=request.GET.get('page',1)
+#     currentPage=int(page)
+#     try:
+#         appcase_list=paginator.page(page)
+#     except PageNotAnInteger:
+#         appcase_list=paginator.page(1)
+#     except EmptyPage:
+#         appcase_list=paginator.page(paginator.num_pages)
+#     return render(request,'appcasestep_manage.html',{'user':username,'appcase':appcase,'appcasesteps':appcasestep_list,"appcasestepcount":appcasestep_count})
 # APP用例测试步骤
 @login_required
 def appcasestep_manage(request):
     username =request.session.get('user','')
-    appcasestep_list=Appcasestep.objects.all()
     appcaseid=request.GET.get('appcase.id',None)
-    appcase=Appcase.objects.all(id=appcaseid)
+    print('appcaseid:'+str(appcaseid))
+    appcase=Appcase.objects.get(id=appcaseid)
+    print(appcase)
     appcasestep_list = Appcasestep.objects.all()
-    appcasestep_count=Appcasestep.objects.all().count()
-    paginator=Paginator(appcasestep_list,8)
-    page=request.GET.get('page',1)
-    currentPage=int(page)
-    try:
-        appcase_list=paginator.page(page)
-    except PageNotAnInteger:
-        appcase_list=paginator.page(1)
-    except EmptyPage:
-        appcase_list=paginator.page(paginator.num_pages)
-    return render(request,'appcasestep_manage.html',{'user':username,'appcasestep':appcasestep_list,"appcasestepcount":appcasestep_count})
+    print(appcasestep_list)
+    return render(request,'appcasestep_manage.html',{'user':username,'appcase':appcase,'appcasesteps':appcasestep_list})
+
+
+
 
 
 @login_required

@@ -81,6 +81,7 @@
             {% for appcasestep in appcasesteps %}
             <tr>
                 {% if appcasestep.Appcase.id == appcase.id %}
+                <td>{{appcasestep.id}}</td>>
                 <td>{{appcasestep.Appcase.Product.productname}}</td>
                 <td>case{{appcasestep.Appcase.id}}:{{appcase.appcasename}}</td>
                 <td>{{appcasestep.appcasestep}}:{{appcasestep.apptestobjname}}</td>

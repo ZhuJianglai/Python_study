@@ -23,6 +23,7 @@ from apptest import appviews
 from webtest import webviews
 name='apistep_manage'
 name='appcasestep_manage'
+name='webcasestep_manage'
 urlpatterns = [
     path('', views.login),
     path('admin/', admin.site.urls),
@@ -40,7 +41,7 @@ urlpatterns = [
     path('appcase_manage/',appviews.appcase_manage),
     path('appcasestep_manage/',appviews.appcasestep_manage,name='appcasestep_manage'),
     path('webcase_manage/', webviews.webcase_manage),
-    path('webcasestep_manage/', webviews.webcasestep_manage),
+    path('webcasestep_manage/', webviews.webcasestep_manage,name='webcasestep_manage'),
     path('test_report/',views.test_report),
     path('left/',views.left),
     path('apisearch/',views.apisearch),

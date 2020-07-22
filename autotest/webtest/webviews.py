@@ -25,23 +25,39 @@ def webcase_manage(request):
     return render(request,'webcase_manage.html',{'user':username,'webcases':webcase_list,'webcasecount':webcase_count})
 
 
+# # web用例测试步骤
+# @login_required
+# def webcasestep_manage(request):
+#     username =request.session.get('user','')
+#     print(username)
+#     webcasestep_list=Webcasestep.objects.all()
+#     webcasestep_count=Webcasestep.objects.all().count()
+#     paginator=Paginator(webcasestep_list,8)
+#     page=request.GET.get('page',1)
+#     crrentPage=int(page)
+#     try:
+#         webcasestep_list=paginator.page(page)
+#     except PageNotAnInteger:
+#         webcasestep_list=paginator.page(1)
+#     except EmptyPage:
+#         webcasestep_list=paginator.page(paginator.num_pages)
+#     return render(request,'webcasestep_manage.html',{'user':username,'webcasesteps':webcasestep_list,'webcasestepcount':webcasestep_count})
+
 # web用例测试步骤
 @login_required
 def webcasestep_manage(request):
     username =request.session.get('user','')
-    print(username)
+    webcaseid=request.GET.get('webcase.id',None)
+    print(webcaseid)
+    webcase=Webcase.objects.get(id=webcaseid)
+    print(webcase)
     webcasestep_list=Webcasestep.objects.all()
-    webcasestep_count=Webcasestep.objects.all().count()
-    paginator=Paginator(webcasestep_list,8)
-    page=request.GET.get('page',1)
-    crrentPage=int(page)
-    try:
-        webcasestep_list=paginator.page(page)
-    except PageNotAnInteger:
-        webcasestep_list=paginator.page(1)
-    except EmptyPage:
-        webcasestep_list=paginator.page(paginator.num_pages)
-    return render(request,'webcasestep_manage.html',{'user':username,'webcasesteps':webcasestep_list,'webcasestepcount':webcasestep_count})
+    print(webcasestep_list)
+    for row in webcasestep_list:
+        print(row.webcase.id)
+
+    return render(request,'webcasestep_manage.html',{'user':username,'webcase':webcase,'webcasesteps':webcasestep_list})
+
 
 # web搜索功能
 @login_required

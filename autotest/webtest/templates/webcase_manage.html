@@ -74,7 +74,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID</th><th>web产品</th><th>web测试用例名称</th><th>web测试结果</th><th>web测试负责人</th><th>时间</th><th>web测试用例步骤</th><th>编辑</th><th>编辑</th><th>删除</th>
+                <th>ID</th><th>web产品</th><th>web测试用例名称</th><th>web测试结果</th><th>web测试负责人</th><th>时间</th><th>web测试用例步骤</th><th>查看</th><th>编辑</th><th>删除</th>
             </tr>
             </thead>
             <tbody>
@@ -88,6 +88,10 @@
                 <td>{{webcase.create_time}}</td>
                 <td><a href="#">{{webcase.webteststep}}</a></td>
 <!--                <td>{{webcase.webteststep}}</td>-->
+                <td>
+                    <a href="{% url "webcasestep_manage" %}?webcase.id={{ webcase.id }} ">
+                    <img src="/static/admin/img/icon-yes.svg"/></a>
+                </td>
                 <td><a href="color:light blue" class="related-widget-wrapper-link add-related" id="add_id_Webcase" href="../admin/webcase/webcase/?{{webcase.id}}/change/?_to_field=id&_popup=1">
                     <img src="/static/admin/img/icon-changelink.svg"/>
                 </a></td>
