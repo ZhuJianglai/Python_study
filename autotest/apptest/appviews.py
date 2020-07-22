@@ -21,7 +21,6 @@ def appcase_manage(request):
         appcase_list=paginator.page(1)
     except EmptyPage:
         appcase_list=paginator.page(paginator.num_pages)
-    print(username)
     return render(request,'appcase_manage.html',{'user':username,'appcases':appcase_list,"appcasecount":appcase_count})
 
 
@@ -53,9 +52,7 @@ def appcasestep_manage(request):
     appcaseid=request.GET.get('appcase.id',None)
     print('appcaseid:'+str(appcaseid))
     appcase=Appcase.objects.get(id=appcaseid)
-    print(appcase)
     appcasestep_list = Appcasestep.objects.all()
-    print(appcasestep_list)
     return render(request,'appcasestep_manage.html',{'user':username,'appcase':appcase,'appcasesteps':appcasestep_list})
 
 

@@ -48,14 +48,9 @@ def webcase_manage(request):
 def webcasestep_manage(request):
     username =request.session.get('user','')
     webcaseid=request.GET.get('webcase.id',None)
-    print(webcaseid)
     webcase=Webcase.objects.get(id=webcaseid)
-    print(webcase)
     webcasestep_list=Webcasestep.objects.all()
     print(webcasestep_list)
-    for row in webcasestep_list:
-        print(row.webcase.id)
-
     return render(request,'webcasestep_manage.html',{'user':username,'webcase':webcase,'webcasesteps':webcasestep_list})
 
 
