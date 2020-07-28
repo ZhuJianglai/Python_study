@@ -10,17 +10,18 @@ import requests,time,sys,re
 import urllib
 
 def readRes(res,res_check):
-    res=res.decode().repalce('":"','=').repalce('":','=')
+    res=res.decode().replace('":"','=').replace('":','=')
     res_check=res_check.split(';')
     for s in res_check:
-        pass
-    else:
-        return '错误，返回参数和预期不一致'
+        if s in res:
+            pass
+        else:
+            return '错误，返回参数和预期不一致'
     return 'pass'
 
 
 if __name__=='__main__':
-    url='http://'+'127.0.0.1:8000'+'login'
+    url='http://'+'127.0.0.1:8000'+'/login'
     headers={'Authorization':'','content_Type':'application/json'}
     data=None
     req=urllib.request.Request(url=url,data=data,headers=headers,method='GET')
