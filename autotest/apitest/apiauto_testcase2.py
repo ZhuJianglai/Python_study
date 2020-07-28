@@ -9,7 +9,7 @@ import pymysql
 import re
 import json
 import requests
-
+import time
 def test_readSQLcase():
     sql="select id,apiname,apiurl,apimethod,apiparamvalue,apiresult,apistatus from autotest.apitest_apis"
     coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port='3306',host='127.0.0.1',charser='utf8')
@@ -77,6 +77,40 @@ def CredentialId():
     response=requests.post(url=url,data=body_data,headers=headers)
     data=response.text
     regx='.*"CredentialId":"(.*)","Scene"'
+    pm=re.search(regx,data)
+    id=pm.group(1)
+
+def seturl(set):
+    global seturl()
+    sql="select setname,setvalue from set_set"
+    coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host='127.0.0.1',charset='utf8')
+    cursor=coo.cursor()
+    aa=cursor.execute(sql)
+    info=cursor.fetchmany(aa)
+    print(info)
+    coo.commit()
+    cursor.close()
+    if info[0][0]==set:
+        setvalue=info[0][1]
+        print(setvalue)
+    return setvalue
+
+def writeResult(case_id,result):
+    result=result.encode('utf-8')
+    now=time.strftime("%Y-%m-%d %H:%M:%S")
+    sql='update apitest_apistep set apitest_apitest.status=%s,apitest_apistep.create_time=%s where apitest_apistep.id=%s;'
+    param=(result,now,case_id)
+    print('api autotest resule is '+result.decode())
+    coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host='127.0.0.1',charset='utf8')
+    cursor=coo.cursor()
+    cursor.execute(sql,param)
+    coo.commit()
+    cursor.close()
+    coo.close()
+
+
+def caseWriteResult(case_id,result):
+
 
 
 
