@@ -98,7 +98,7 @@ def seturl(set):
 def writeResult(case_id,result):
     result=result.encode('utf-8')
     now=time.strftime("%Y-%m-%d %H:%M:%S")
-    sql='update apitest_apistep set apitest_apitest.status=%s,apitest_apistep.create_time=%s where apitest_apistep.id=%s;'
+    sql='update apitest_apistep set apitest_apitest.apisstatus=%s,apitest_apistep.create_time=%s where apitest_apistep.id=%s;'
     param=(result,now,case_id)
     print('api autotest resule is '+result.decode())
     coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host='127.0.0.1',charset='utf8')
@@ -110,6 +110,22 @@ def writeResult(case_id,result):
 
 
 def caseWriteResult(case_id,result):
+    result=result.encode('utf-8')
+    now=time.strftime("%Y-%m-%d %H:%M:%S")
+    sql='update apitest_apis set apitest_apis.apistatus=%s,apitest_apis.create_time=%s where apitest_apis.id=%s;'
+    param=(result,now,case_id)
+    print('api autotest resule is '+result.decode())
+    coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host='127.0.0.1',charset='utf8')
+    cursor=coo.cursor()
+    cursor.execute(sql,param)
+    coo.commit()
+    cursor.close()
+    coo.close()
+
+def writeBug(bug_id,interface_name,request,response,res_check):
+    interface_name=interface_name.encode('utf-8')
+    res_check=res_check.encode('utf_8')
+    request=request.encode('utf-8')
 
 
 
