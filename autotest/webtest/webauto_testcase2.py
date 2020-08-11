@@ -30,3 +30,38 @@ def readSQLcase():
     coo.commit()
     cursor.close()
     coo.close()
+
+
+def webtestcase(case_list):
+    for case in case_list:
+        try:
+            case_id=case[0]
+            findmethod=case[2]
+            evelement=case[3]
+            optmethod=case[4]
+            testdata=case[5]
+        except Exception as e:
+            return "测试用例格式不正确！%s"%e
+        print(case)
+        time.sleep(5)
+        if optmethod=='sendkeys' and findmethod=='find_element_by_id':
+            print(evelement)
+            driver.find_element_by_id(evelement).send_keys(testdata)
+        elif optmethod=='click' and findmethod=='find_element_by_name':
+            print(evelement)
+            driver.find_element_by_name(evelement).click()
+        elif optmethod=='click' and findmethod=='find_element_by_id':
+            print(evelement)
+            driver.find_element_by_id(evelement).click()
+
+if __name__=='__main__':
+     time.sleep(1)
+     global driver
+     driver=webdriver.Chrome()
+     driver.get('http://www.baidu.com')
+     time.sleep(1)
+     readSQLcase()
+     time.sleep(1)
+     driver.quit()
+
+     print('Done')

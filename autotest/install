@@ -1,6 +1,7 @@
 pip install django-bootstrap4
 pip install bootstrap4
 pip install pymysql
+pip install Appium_Python_Client
 
 
 pip --default-timeout=1000 install -U django-bootstrap4
