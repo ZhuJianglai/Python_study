@@ -127,7 +127,7 @@ def seturl(set):
         if ii[0]==set:
             setvalue=ii[1]
             print(setvalue)
-    return setvalue
+        return setvalue
 
 def writeResult(case_id,result):
     result=result.encode('utf-8')
