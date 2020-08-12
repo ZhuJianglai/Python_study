@@ -22,7 +22,7 @@ PATH=lambda p:os.path.abspath(os.path.join(os.path.dirname(__file__),p))
 global driver
 
 HOSTNAME='127.0.0.1'
-class search(unittest.TestCase):
+class Search(unittest.TestCase):
     def setUp(self) :
         time.sleep(5)
 
@@ -73,8 +73,6 @@ if __name__=='__main__':
      driver=webdriver.Chrome()
      driver.get('http://www.baidu.com')
      time.sleep(1)
-
-     time.sleep(1)
-     driver.quit()
-
-     print('Done')
+     now=time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
+     testunit=unittest.TestSuite()
+     testunit.addTest(Search("test_readSQLcase"))
