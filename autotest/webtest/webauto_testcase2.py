@@ -29,7 +29,7 @@ class Search(unittest.TestCase):
 
     def test_readSQLcase(self):
         sql="select id,webteststep,webfindmethod,webevelement,weboptmethod,webtestdata,webassertdata,webtestresult from autotest.webtest_webcasestep where autotest.webtest_webcasestep.webcase_id=3 order by id asc"
-        coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host=HOSTNAME,chartset='utf8')
+        coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host=HOSTNAME,charset='utf8')
         cursor=coo.cursor()
         aa=cursor.execute(sql)
         info=cursor.fetchmany(aa)
@@ -76,3 +76,10 @@ if __name__=='__main__':
      now=time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
      testunit=unittest.TestSuite()
      testunit.addTest(Search("test_readSQLcase"))
+     filename="webtetst_report.html"
+     fp=open(filename,'wb')
+     runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title=u'web自动化测试报告',description=u'搜索测试用例')
+     runner.run(testunit)
+     driver.quit()
+     print('Done')
+     time.sleep(5)
