@@ -28,7 +28,7 @@ class Search(unittest.TestCase):
 
 
     def test_readSQLcase(self):
-        sql="select id,webteststep,webfindmethod,webevelement,weboptmethod,webtestdata,webassertdata,webtestresult from autotest.webtest_webcasestep where autotest.webtest_webcasestep.webcase_id=3 order by id asc"
+        sql="select id,webteststep,webfindmethod,webevelement,weboptmethod,webtestdata,webassertdata,webtestresult from autotest.webtest_webcasestep where autotest.webtest_webcasestep.webcase_id=4 order by id asc"
         coo=pymysql.connect(user='root',passwd='1234567a',db='autotest',port=3306,host=HOSTNAME,charset='utf8')
         cursor=coo.cursor()
         aa=cursor.execute(sql)
@@ -68,12 +68,11 @@ def webtestcase(case_list):
             driver.find_element_by_id(evelement).click()
 
 if __name__=='__main__':
-     time.sleep(1)
-     global driver
      driver=webdriver.Chrome()
      driver.get('http://www.baidu.com')
      time.sleep(1)
      now=time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
+     print(now)
      testunit=unittest.TestSuite()
      testunit.addTest(Search("test_readSQLcase"))
      filename="webtetst_report.html"
