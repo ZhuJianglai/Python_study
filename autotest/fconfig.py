@@ -15,7 +15,7 @@ def getConfig(section,key):
     config.read(path)
     return config.get(section,key)
 
-
-if __name__=='__main__':
-    print(getConfig('database','host'))
+#
+# if __name__=='__main__':
+#     print(getConfig('database','host'))
 

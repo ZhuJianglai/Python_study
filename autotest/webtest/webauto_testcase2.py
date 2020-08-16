@@ -19,12 +19,13 @@ import HTMLTestRunner
 
 
 PATH=lambda p:os.path.abspath(os.path.join(os.path.dirname(__file__),p))
-global driver
+
 
 HOSTNAME='127.0.0.1'
 class Search(unittest.TestCase):
     def setUp(self) :
-        time.sleep(5)
+        time.sleep(1)
+
 
 
     def test_readSQLcase(self):
@@ -68,17 +69,19 @@ def webtestcase(case_list):
             driver.find_element_by_id(evelement).click()
 
 if __name__=='__main__':
-     driver=webdriver.Chrome()
-     driver.get('http://www.baidu.com')
-     time.sleep(1)
-     now=time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
-     print(now)
-     testunit=unittest.TestSuite()
-     testunit.addTest(Search("test_readSQLcase"))
-     filename="webtetst_report.html"
-     fp=open(filename,'wb')
-     runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title=u'web自动化测试报告',description=u'搜索测试用例')
-     runner.run(testunit)
-     driver.quit()
-     print('Done')
-     time.sleep(5)
+    global driver
+    print(__name__)
+    driver=webdriver.Chrome()
+    driver.get('http://www.baidu.com')
+    time.sleep(1)
+    now=time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
+    print(now)
+    testunit=unittest.TestSuite()
+    testunit.addTest(Search("test_readSQLcase"))
+    filename="webtetst_report.html"
+    fp=open(filename,'wb')
+    runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title=u'web自动化测试报告',description=u'搜索测试用例')
+    runner.run(testunit)
+    driver.quit()
+    print('Done')
+    time.sleep(5)
