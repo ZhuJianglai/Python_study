@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 
 import os
+import djcelery
+
+
+djcelery.setup_loader() #加载djcelery
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
     'set',
     'apptest',
     'webtest',
+    'djcelery'
 ]
 
 MIDDLEWARE = [
@@ -115,6 +122,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+
+#数据库调度
+CELERY_SCHEDULER ='djcelery.schedulers.DatabaseScheduler'
+
+BROKER_URL='redis://127.0.0.1:6379/0'
+BROKER_TRANSPORT='redis'
 
 
 # Internationalization
