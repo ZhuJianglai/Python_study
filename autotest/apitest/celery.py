@@ -18,4 +18,4 @@ django.setup()
 app=Celery('autotest')
 
 app.config_from_object('django.conf:settings')
-app.autodiscover_tasks(lambda :settings.INSRALLED_APPS)
+app.autodiscover_tasks(lambda:settings.INSRALLED_APPS)

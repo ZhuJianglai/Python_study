@@ -11,3 +11,11 @@ pip --default-timeout=1000 install -U django-bootstrap4
 pip  install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com pymysql
 
 pip  install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com --upgrade pip
+
+#第十一章 定时任务发布 安装
+pip3 install Celery #安装pyramind——celery-3.0.0
+pip3 install django-celery
+pip3 install celery-with-redis-3.0
+pip3 install django-clery-beat
+
+#下载Redis-x64-3.2.100
